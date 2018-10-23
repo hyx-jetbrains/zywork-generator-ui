@@ -15,7 +15,7 @@
             </FormItem>
             <FormItem v-if="tables.tables.length > 0" label="主体表" prop="primaryTable">
               <RadioGroup v-model="form.primaryTable">
-                <Radio v-for="item in tables.tables" :label="item">{{ item }}</Radio>
+                <Radio v-for="item in tables.tables" :label="item" :key="item">{{ item }}</Radio>
               </RadioGroup>
             </FormItem>
             <FormItem label="实体类名称" prop="beanName">
