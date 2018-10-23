@@ -187,7 +187,11 @@
                 method: 'post',
                 data: this.form
               }).then(response => {
-                this.$Message.success(response.data.message)
+                if (response.data.code === 200) {
+                  this.$Message.success(response.data.message)
+                } else if (response.data.code === 500) {
+                  this.$Message.warning(response.data.message)
+                }
               }).catch(error => {
                 console.log(error)
                 this.$Message.error('未生成成功，请稍候再试')
