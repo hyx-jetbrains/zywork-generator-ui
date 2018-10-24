@@ -61,8 +61,9 @@
         form: {
           beanName: '',
           requestMapping: '',
-          whereClause: '',
+          tables: [],
           primaryTable: '',
+          whereClause: '',
           columns: [],
           codeTypes: ['bean', 'mapper', 'dao', 'service', 'controller', 'view']
         },
@@ -179,6 +180,7 @@
         console.log(this.form.columns)
       },
       generateCodes() {
+        this.form.tables = this.tables.tables
         this.$refs['joinForm'].validate(valid => {
           if (valid) {
             if (this.form.columns.length > 0) {
