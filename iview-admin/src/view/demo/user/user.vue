@@ -230,32 +230,23 @@
         },
         validateRules: {
           id: [
-            {required: true, message: '此项为必须项', trigger: 'blur'}
+            {required: true, message: '此项为必须项'}
           ],
           email: [
-            {type: 'string', min: 1, max: 100, message: '必须1-100个字符', trigger: 'blur'}
+            {type: 'string', min: 1, max: 100, message: '必须1-100个字符'}
           ],
           phone: [
-            {type: 'string', min: 1, max: 11, message: '必须1-11个字符', trigger: 'blur'}
+            {type: 'string', min: 11, max: 11, message: '必须11-11个字符'}
           ],
           accountName: [
-            {type: 'string', min: 1, max: 20, message: '必须1-20个字符', trigger: 'blur'}
+            {type: 'string', min: 1, max: 20, message: '必须1-20个字符'}
           ],
           password: [
-            {required: true, message: '此项为必须项', trigger: 'blur'},
-            {type: 'string', min: 1, max: 50, message: '必须1-50个字符', trigger: 'blur'}
+            {required: true, message: '此项为必须项'},
+            {type: 'string', min: 1, max: 50, message: '必须1-50个字符'}
           ],
           salt: [
-            {type: 'string', min: 1, max: 200, message: '必须1-200个字符', trigger: 'blur'}
-          ],
-          createTime: [
-            {required: true, message: '此项为必须项', trigger: 'blur'}
-          ],
-          updateTime: [
-            {required: true, message: '此项为必须项', trigger: 'blur'}
-          ],
-          isActive: [
-            {required: true, message: '此项为必须项', trigger: 'blur'}
+            {type: 'string', min: 1, max: 200, message: '必须1-200个字符'}
           ],
 
         },
@@ -304,49 +295,49 @@
             {
               title: '编号',
               key: 'id',
-              width: 100,
+              width: 120,
               sortable: true
             },
             {
               title: '邮箱',
               key: 'email',
-              width: 100,
+              width: 120,
               sortable: true
             },
             {
               title: '手机号',
               key: 'phone',
-              width: 100,
+              width: 120,
               sortable: true
             },
             {
               title: '账户名',
               key: 'accountName',
-              width: 100,
+              width: 120,
               sortable: true
             },
             {
               title: '密码',
               key: 'password',
-              width: 100,
+              width: 120,
               sortable: true
             },
             {
               title: '加密盐值',
               key: 'salt',
-              width: 100,
+              width: 120,
               sortable: true
             },
             {
               title: '创建时间',
               key: 'createTime',
-              width: 100,
+              width: 120,
               sortable: true
             },
             {
               title: '更新时间',
               key: 'updateTime',
-              width: 100,
+              width: 120,
               sortable: true
             },
             {
@@ -359,7 +350,7 @@
             {
               title: '激活状态',
               key: 'isActive',
-              width: 100,
+              width: 120,
               align: 'center',
               render: (h, params) => {
                 return h('i-switch', {

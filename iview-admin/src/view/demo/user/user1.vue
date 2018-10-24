@@ -154,21 +154,21 @@
         },
         validateRules: {
           name: [
-            {required: true, message: '此项为必须项', trigger: 'blur'},
-            {type: 'string', min: 1, max: 20, message: '长度必须在1-20之间', trigger: 'blur'},
+            {required: true, message: '此项为必须项'},
+            {type: 'string', min: 1, max: 20, message: '长度必须在1-20之间'},
           ],
           nickname: [
-            {required: true, message: '此项为必须项', trigger: 'blur'}
+            {required: true, message: '此项为必须项'}
           ],
           age: [
-            {required: true, message: '此项为必须项', trigger: 'blur'},
-            {type: 'integer', min: 0, message: '必须为大于等于0的整数', trigger: 'blur', transform(value) {
+            {required: true, message: '此项为必须项'},
+            {type: 'integer', min: 0, message: '必须为大于等于0的整数', transform(value) {
                 return Number(value)
               }
             }
           ],
           birthday: [
-            {required: true, message: '此项为必须项', trigger: 'blur', pattern: /.+/}
+            {required: true, message: '此项为必须项', pattern: /.+/}
           ]
         },
         searchForm: {
@@ -206,33 +206,40 @@
             {
               title: '用户名',
               key: 'name',
+              width: 120,
               sortable: true
             },
             {
               title: '昵称',
               key: 'nickname',
+              width: 120,
               sortable: true
             },
             {
               title: '年龄',
               key: 'age',
+              width: 120,
               sortable: true
             },
             {
               title: '故乡',
-              key: 'hometown'
+              key: 'hometown',
+              width: 120
             },
             {
               title: '毕业学校',
-              key: 'school'
+              key: 'school',
+              width: 120
             },
             {
               title: '个人评价',
-              key: 'comment'
+              key: 'comment',
+              width: 120
             },
             {
               title: '激活状态',
               key: 'isActive',
+              width: 120,
               align: 'center',
               render: (h, params) => {
                 return h('i-switch', {
