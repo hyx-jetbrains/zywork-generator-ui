@@ -20,7 +20,7 @@
           <Tooltip content="刷新" placement="right">
             <Button icon="md-refresh" type="success" shape="circle" @click="search"></Button>
           </Tooltip>
-          <Table stripe :loading="table.loading" :columns="table.tableColumns" :data="table.tableDetails"
+          <Table ref="dataTable" stripe :loading="table.loading" :columns="table.tableColumns" :data="table.tableDetails" :width="table.width"
                  style="margin-top:20px;" @on-selection-change="changeSelection" @on-sort-change="changeSort"></Table>
           <div style="margin: 20px;overflow: hidden">
             <div style="float: right;">
@@ -346,7 +346,6 @@
               width: 120,
               sortable: true
             },
-
             {
               title: '激活状态',
               key: 'isActive',
@@ -434,6 +433,7 @@
     },
     computed: {},
     mounted() {
+      this.fitTable()
       this.search()
     },
     methods: {
@@ -521,6 +521,9 @@
       },
       changePageSize(pageSize) {
         utils.changePageSize(this, pageSize)
+      },
+      fitTable() {
+        utils.fitTable(this, 'dataTable', this.table.tableColumns, ['email', 'phone', 'accountName', 'password', 'isActive'])
       }
     }
   }

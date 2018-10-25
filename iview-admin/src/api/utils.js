@@ -280,3 +280,31 @@ export const changePageSize = (self, pageSize) => {
   self.searchForm.pageSize = pageSize
   search(self)
 }
+
+/**
+ * 把指定的表格以合适的列大小显示到屏幕
+ * @param {*} self this
+ * @param {*} tableRef 表格的ref
+ * @param {*} tableColumns 表格所有的列信息
+ * @param {*} columnKeys 需要重新设置大小的列
+ */
+export const fitTable = (self, tableRef, tableColumns, columnKeys) => {
+  self.$nextTick(() => {
+    let tableWidth = self.$refs[tableRef].$el.clientWidth
+    let width = 0
+    tableColumns.forEach((column, index) => {
+      width += column.width
+    })
+    if (width < tableWidth) {
+      let fitWidth = (tableWidth - width) / columnKeys.length
+      tableColumns.forEach((column, index) => {
+        columnKeys.forEach((key, index) => {
+          if (column.key === key) {
+            column.width += fitWidth
+          }
+        })
+      })
+    }
+  })
+  
+}
