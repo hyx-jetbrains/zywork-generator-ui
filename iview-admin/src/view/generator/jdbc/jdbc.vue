@@ -35,7 +35,7 @@
       return {
         form: {
           driverClassName: 'com.mysql.cj.jdbc.Driver',
-          url: 'jdbc:mysql://localhost:3306/zywork?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false&allowMultiQueries=true',
+          url: 'jdbc:mysql://localhost:3306/zywork?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowMultiQueries=true',
           username: 'root',
           password: 'root'
         },

@@ -89,44 +89,44 @@
           <Row>
             <i-col span="11">
               <FormItem prop="idMin">
-                <Input v-model="form.idMin"/>
+                <Input v-model="searchForm.idMin"/>
               </FormItem>
             </i-col>
             <i-col span="2" style="text-align: center">-</i-col>
             <i-col span="11">
               <FormItem prop="idMax">
-                <Input v-model="form.idMax"/>
+                <Input v-model="searchForm.idMax"/>
               </FormItem>
             </i-col>
           </Row>
         </FormItem>
         <FormItem label="邮箱" prop="email">
-          <Input v-model="form.email"/>
+          <Input v-model="searchForm.email"/>
         </FormItem>
         <FormItem label="手机号" prop="phone">
-          <Input v-model="form.phone"/>
+          <Input v-model="searchForm.phone"/>
         </FormItem>
         <FormItem label="账户名" prop="accountName">
-          <Input v-model="form.accountName"/>
+          <Input v-model="searchForm.accountName"/>
         </FormItem>
         <FormItem label="密码" prop="password">
-          <Input v-model="form.password"/>
+          <Input v-model="searchForm.password"/>
         </FormItem>
         <FormItem label="加密盐值" prop="salt">
-          <Input v-model="form.salt"/>
+          <Input v-model="searchForm.salt"/>
         </FormItem>
         <FormItem label="创建时间">
           <Row>
             <i-col span="11">
               <FormItem prop="createTimeMin">
-                <DatePicker v-model="form.createTimeMin" type="datetime" format="yyyy-MM-dd HH:mm"
+                <DatePicker @on-change="searchForm.createTimeMin=$event" v-model="searchForm.createTimeMin" type="datetime" format="yyyy-MM-dd HH:mm"
                             style="width: 100%;"></DatePicker>
               </FormItem>
             </i-col>
             <i-col span="2" style="text-align: center">-</i-col>
             <i-col span="11">
               <FormItem prop="createTimeMax">
-                <DatePicker v-model="form.createTimeMax" type="datetime" format="yyyy-MM-dd HH:mm"
+                <DatePicker @on-change="searchForm.createTimeMax=$event" v-model="searchForm.createTimeMax" type="datetime" format="yyyy-MM-dd HH:mm"
                             style="width: 100%;"></DatePicker>
               </FormItem>
             </i-col>
@@ -136,14 +136,14 @@
           <Row>
             <i-col span="11">
               <FormItem prop="updateTimeMin">
-                <DatePicker v-model="form.updateTimeMin" type="datetime" format="yyyy-MM-dd HH:mm"
+                <DatePicker @on-change="searchForm.updateTimeMin=$event" v-model="searchForm.updateTimeMin" type="datetime" format="yyyy-MM-dd HH:mm"
                             style="width: 100%;"></DatePicker>
               </FormItem>
             </i-col>
             <i-col span="2" style="text-align: center">-</i-col>
             <i-col span="11">
               <FormItem prop="updateTimeMax">
-                <DatePicker v-model="form.updateTimeMax" type="datetime" format="yyyy-MM-dd HH:mm"
+                <DatePicker @on-change="searchForm.updateTimeMax=$event" v-model="searchForm.updateTimeMax" type="datetime" format="yyyy-MM-dd HH:mm"
                             style="width: 100%;"></DatePicker>
               </FormItem>
             </i-col>
@@ -153,13 +153,13 @@
           <Row>
             <i-col span="11">
               <FormItem prop="isActiveMin">
-                <Input v-model="form.isActiveMin"/>
+                <Input v-model="searchForm.isActiveMin"/>
               </FormItem>
             </i-col>
             <i-col span="2" style="text-align: center">-</i-col>
             <i-col span="11">
               <FormItem prop="isActiveMax">
-                <Input v-model="form.isActiveMax"/>
+                <Input v-model="searchForm.isActiveMax"/>
               </FormItem>
             </i-col>
           </Row>
