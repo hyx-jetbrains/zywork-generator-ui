@@ -508,7 +508,6 @@
         utils.remove(this, row)
       },
       search() {
-        console.log(this.searchForm)
         utils.search(this)
       },
       changeSelection(selections) {
