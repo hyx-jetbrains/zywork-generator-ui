@@ -119,14 +119,14 @@
           <Row>
             <i-col span="11">
               <FormItem prop="createTimeMin">
-                <DatePicker @on-change="searchForm.createTimeMin=$event" v-model="searchForm.createTimeMin" type="datetime" format="yyyy-MM-dd HH:mm:ss"
+                <DatePicker @on-change="searchForm.createTimeMin=$event" :value="searchForm.createTimeMin" type="datetime" format="yyyy-MM-dd HH:mm:ss"
                             style="width: 100%;"></DatePicker>
               </FormItem>
             </i-col>
             <i-col span="2" style="text-align: center">-</i-col>
             <i-col span="11">
               <FormItem prop="createTimeMax">
-                <DatePicker @on-change="searchForm.createTimeMax=$event" v-model="searchForm.createTimeMax" type="datetime" format="yyyy-MM-dd HH:mm:ss"
+                <DatePicker @on-change="searchForm.createTimeMax=$event" :value="searchForm.createTimeMax" type="datetime" format="yyyy-MM-dd HH:mm:ss"
                             style="width: 100%;"></DatePicker>
               </FormItem>
             </i-col>
@@ -136,14 +136,14 @@
           <Row>
             <i-col span="11">
               <FormItem prop="updateTimeMin">
-                <DatePicker @on-change="searchForm.updateTimeMin=$event" v-model="searchForm.updateTimeMin" type="datetime" format="yyyy-MM-dd HH:mm:ss"
+                <DatePicker @on-change="searchForm.updateTimeMin=$event" :value="searchForm.updateTimeMin" type="datetime" format="yyyy-MM-dd HH:mm:ss"
                             style="width: 100%;"></DatePicker>
               </FormItem>
             </i-col>
             <i-col span="2" style="text-align: center">-</i-col>
             <i-col span="11">
               <FormItem prop="updateTimeMax">
-                <DatePicker @on-change="searchForm.updateTimeMax=$event" v-model="searchForm.updateTimeMax" type="datetime" format="yyyy-MM-dd HH:mm:ss"
+                <DatePicker @on-change="searchForm.updateTimeMax=$event" :value="searchForm.updateTimeMax" type="datetime" format="yyyy-MM-dd HH:mm:ss"
                             style="width: 100%;"></DatePicker>
               </FormItem>
             </i-col>
@@ -508,6 +508,7 @@
         utils.remove(this, row)
       },
       search() {
+        console.log(this.searchForm)
         utils.search(this)
       },
       changeSelection(selections) {
