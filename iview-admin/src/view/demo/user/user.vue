@@ -255,7 +255,7 @@
             {type: 'string', min: 1, max: 20, message: '必须1-20个字符', trigger: 'blur'}
           ],
           age: [
-            {type: 'integer', required: true, message: '此项为必须项', trigger: 'blur'}
+            {type: 'integer', required: true, message: '此项为必须项', trigger: 'blur, change'},
           ],
           password: [
             {type: 'string', required: true, message: '此项为必须项', trigger: 'blur'},
