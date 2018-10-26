@@ -33,9 +33,6 @@
     </Row>
     <Modal v-model="modal.add" title="添加" @on-visible-change="changeModalVisibleResetForm('addForm', $event)">
       <Form ref="addForm" :model="form" :label-width="80" :rules="validateRules">
-        <FormItem label="编号" prop="id">
-          <Input v-model="form.id"/>
-        </FormItem>
         <FormItem label="邮箱" prop="email">
           <Input v-model="form.email"/>
         </FormItem>
@@ -44,6 +41,9 @@
         </FormItem>
         <FormItem label="账户名" prop="accountName">
           <Input v-model="form.accountName"/>
+        </FormItem>
+        <FormItem label="年龄" prop="age">
+          <Input v-model="form.age"/>
         </FormItem>
         <FormItem label="密码" prop="password">
           <Input v-model="form.password"/>
@@ -59,9 +59,6 @@
     </Modal>
     <Modal v-model="modal.edit" title="修改" @on-visible-change="changeModalVisibleResetForm('editForm', $event)">
       <Form ref="editForm" :model="form" :label-width="80" :rules="validateRules">
-        <FormItem label="编号" prop="id">
-          <Input v-model="form.id"/>
-        </FormItem>
         <FormItem label="邮箱" prop="email">
           <Input v-model="form.email"/>
         </FormItem>
@@ -70,6 +67,9 @@
         </FormItem>
         <FormItem label="账户名" prop="accountName">
           <Input v-model="form.accountName"/>
+        </FormItem>
+        <FormItem label="年龄" prop="age">
+          <Input v-model="form.age"/>
         </FormItem>
         <FormItem label="密码" prop="password">
           <Input v-model="form.password"/>
@@ -108,6 +108,21 @@
         </FormItem>
         <FormItem label="账户名" prop="accountName">
           <Input v-model="searchForm.accountName"/>
+        </FormItem>
+        <FormItem label="年龄">
+          <Row>
+            <i-col span="11">
+              <FormItem prop="ageMin">
+                <Input v-model="searchForm.ageMin"/>
+              </FormItem>
+            </i-col>
+            <i-col span="2" style="text-align: center">-</i-col>
+            <i-col span="11">
+              <FormItem prop="ageMax">
+                <Input v-model="searchForm.ageMax"/>
+              </FormItem>
+            </i-col>
+          </Row>
         </FormItem>
         <FormItem label="密码" prop="password">
           <Input v-model="searchForm.password"/>
@@ -221,6 +236,7 @@
           email: '',
           phone: '',
           accountName: '',
+          age: '',
           password: '',
           salt: '',
           createTime: '',
@@ -240,6 +256,9 @@
           ],
           accountName: [
             {type: 'string', min: 1, max: 20, message: '必须1-20个字符'}
+          ],
+          age: [
+            {required: true, message: '此项为必须项'}
           ],
           password: [
             {required: true, message: '此项为必须项'},
@@ -261,6 +280,9 @@
           email: '',
           phone: '',
           accountName: '',
+          age: '',
+          ageMin: '',
+          ageMax: '',
           password: '',
           salt: '',
           createTime: '',
@@ -313,6 +335,12 @@
             {
               title: '账户名',
               key: 'accountName',
+              width: 120,
+              sortable: true
+            },
+            {
+              title: '年龄',
+              key: 'age',
               width: 120,
               sortable: true
             },
