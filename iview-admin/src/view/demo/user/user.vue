@@ -43,7 +43,7 @@
           <Input v-model="form.accountName"/>
         </FormItem>
         <FormItem label="年龄" prop="age">
-          <Input v-model="form.age"/>
+          <InputNumber v-model="form.age" style="width: 100%;"/>
         </FormItem>
         <FormItem label="密码" prop="password">
           <Input v-model="form.password"/>
@@ -69,7 +69,7 @@
           <Input v-model="form.accountName"/>
         </FormItem>
         <FormItem label="年龄" prop="age">
-          <Input v-model="form.age"/>
+          <InputNumber v-model="form.age" style="width: 100%;"/>
         </FormItem>
         <FormItem label="密码" prop="password">
           <Input v-model="form.password"/>
@@ -89,13 +89,13 @@
           <Row>
             <i-col span="11">
               <FormItem prop="idMin">
-                <Input v-model="searchForm.idMin"/>
+                <InputNumber v-model="searchForm.idMin" style="width: 100%;"/>
               </FormItem>
             </i-col>
             <i-col span="2" style="text-align: center">-</i-col>
             <i-col span="11">
               <FormItem prop="idMax">
-                <Input v-model="searchForm.idMax"/>
+                <InputNumber v-model="searchForm.idMax" style="width: 100%;"/>
               </FormItem>
             </i-col>
           </Row>
@@ -113,13 +113,13 @@
           <Row>
             <i-col span="11">
               <FormItem prop="ageMin">
-                <Input v-model="searchForm.ageMin"/>
+                <InputNumber v-model="searchForm.ageMin" style="width: 100%;"/>
               </FormItem>
             </i-col>
             <i-col span="2" style="text-align: center">-</i-col>
             <i-col span="11">
               <FormItem prop="ageMax">
-                <Input v-model="searchForm.ageMax"/>
+                <InputNumber v-model="searchForm.ageMax" style="width: 100%;"/>
               </FormItem>
             </i-col>
           </Row>
@@ -168,13 +168,13 @@
           <Row>
             <i-col span="11">
               <FormItem prop="isActiveMin">
-                <Input v-model="searchForm.isActiveMin"/>
+                <InputNumber v-model="searchForm.isActiveMin" style="width: 100%;"/>
               </FormItem>
             </i-col>
             <i-col span="2" style="text-align: center">-</i-col>
             <i-col span="11">
               <FormItem prop="isActiveMax">
-                <Input v-model="searchForm.isActiveMax"/>
+                <InputNumber v-model="searchForm.isActiveMax" style="width: 100%;"/>
               </FormItem>
             </i-col>
           </Row>
@@ -232,40 +232,37 @@
           total: 0
         },
         form: {
-          id: '',
-          email: '',
-          phone: '',
-          accountName: '',
-          age: '',
-          password: '',
-          salt: '',
-          createTime: '',
-          updateTime: '',
-          isActive: '',
+          id: null,
+          email: null,
+          phone: null,
+          accountName: null,
+          age: null,
+          password: null,
+          salt: null,
+          createTime: null,
+          updateTime: null,
+          isActive: null,
 
         },
         validateRules: {
-          id: [
-            {required: true, message: '此项为必须项'}
-          ],
           email: [
-            {type: 'string', min: 1, max: 100, message: '必须1-100个字符'}
+            {type: 'string', min: 1, max: 100, message: '必须1-100个字符', trigger: 'blur'}
           ],
           phone: [
-            {type: 'string', min: 11, max: 11, message: '必须11-11个字符'}
+            {type: 'string', min: 11, max: 11, message: '必须11-11个字符', trigger: 'blur'}
           ],
           accountName: [
-            {type: 'string', min: 1, max: 20, message: '必须1-20个字符'}
+            {type: 'string', min: 1, max: 20, message: '必须1-20个字符', trigger: 'blur'}
           ],
           age: [
-            {required: true, message: '此项为必须项'}
+            {type: 'integer', required: true, message: '此项为必须项', trigger: 'blur'}
           ],
           password: [
-            {required: true, message: '此项为必须项'},
-            {type: 'string', min: 1, max: 50, message: '必须1-50个字符'}
+            {type: 'string', required: true, message: '此项为必须项', trigger: 'blur'},
+            {type: 'string', min: 1, max: 50, message: '必须1-50个字符', trigger: 'blur'}
           ],
           salt: [
-            {type: 'string', min: 1, max: 200, message: '必须1-200个字符'}
+            {type: 'string', min: 1, max: 200, message: '必须1-200个字符', trigger: 'blur'}
           ],
 
         },
@@ -274,15 +271,15 @@
           pageSize: 10,
           sortColumn: '',
           sortOrder: '',
-          id: '',
-          idMin: '',
-          idMax: '',
+          id: null,
+          idMin: null,
+          idMax: null,
           email: '',
           phone: '',
           accountName: '',
-          age: '',
-          ageMin: '',
-          ageMax: '',
+          age: null,
+          ageMin: null,
+          ageMax: null,
           password: '',
           salt: '',
           createTime: '',
@@ -291,9 +288,9 @@
           updateTime: '',
           updateTimeMin: '',
           updateTimeMax: '',
-          isActive: '',
-          isActiveMin: '',
-          isActiveMax: '',
+          isActive: null,
+          isActiveMin: null,
+          isActiveMax: null,
 
         },
         table: {
