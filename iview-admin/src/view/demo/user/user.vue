@@ -3,7 +3,8 @@
     <Row>
       <i-col span="24">
         <Card>
-          <Button @click="showPage" type="primary">新页面</Button>&nbsp;
+          <Button @click="showPage" type="primary">新页面打开User1</Button>&nbsp;
+          <Button @click="showModal('user1')" type="primary">Modal打开User1</Button>&nbsp;
           <Button @click="showModal('add')" type="primary">添加</Button>&nbsp;
           <Dropdown @on-click="batchOpt">
             <Button type="primary">
@@ -83,7 +84,7 @@
         <Button type="primary" size="large" @click="edit">确定</Button>
       </div>
     </Modal>
-    <Modal v-model="modal.search" title="高级搜索" @on-visible-change="changeModalVisibleResetForm('searchForm', $event)">
+    <Modal v-model="modal.search" title="高级搜索">
       <Form ref="searchForm" :model="searchForm" :label-width="80">
         <FormItem label="编号">
           <Row>
@@ -187,17 +188,22 @@
         <Button type="primary" size="large" @click="searchOkModal('search')">确定</Button>
       </div>
     </Modal>
-    <Modal v-model="modal.detail" title="详情">
+    <Modal v-model="modal.detail" title="详情" @on-visible-change="changeModalVisibleResetForm('editForm', $event)">
       <p>编号: <span v-text="form.id"></span></p>
       <p>邮箱: <span v-text="form.email"></span></p>
       <p>手机号: <span v-text="form.phone"></span></p>
       <p>账户名: <span v-text="form.accountName"></span></p>
+      <p>年龄: <span v-text="form.age"></span></p>
       <p>密码: <span v-text="form.password"></span></p>
       <p>加密盐值: <span v-text="form.salt"></span></p>
       <p>创建时间: <span v-text="form.createTime"></span></p>
       <p>更新时间: <span v-text="form.updateTime"></span></p>
       <p>是否激活: <span v-text="form.isActive"></span></p>
 
+    </Modal>
+
+    <Modal v-model="modal.user1" :transfer="false" title="User1">
+      <User1/>
     </Modal>
   </div>
 </template>
@@ -207,15 +213,21 @@
 
   import { mapMutations } from 'vuex'
 
+  import User1 from './user1.vue'
+
   export default {
     name: 'User',
+    components: {
+      User1,
+    },
     data() {
       return {
         modal: {
           add: false,
           edit: false,
           search: false,
-          detail: false
+          detail: false,
+          user1: false
         },
         urls: {
           addUrl: '/user/save',
@@ -490,7 +502,7 @@
       },
       showDetail(modal, row) {
         utils.showModal(this, modal)
-        this.form = row
+        this.form = JSON.parse(JSON.stringify(row))
       },
       changeModalVisibleResetForm(formRef, visible) {
         if (!visible) {

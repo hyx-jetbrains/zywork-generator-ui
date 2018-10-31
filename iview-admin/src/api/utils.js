@@ -28,15 +28,6 @@ export const resetForm = (self, formRef) => {
 }
 
 /**
- * 清空formData数据
- * @param self
- * @param formData
- */
-export const clearForm = (self, formData) => {
-  self[formData] = {}
-}
-
-/**
  * 根据form数据对象添加数据
  * @param self this
  */

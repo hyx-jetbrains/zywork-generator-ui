@@ -122,7 +122,7 @@
   import * as utils from '@/api/utils'
 
   export default {
-    name: 'user',
+    name: 'User1',
     data() {
       return {
         modal: {
