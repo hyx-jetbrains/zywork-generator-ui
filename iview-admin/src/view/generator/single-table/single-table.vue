@@ -21,6 +21,7 @@
                 <Checkbox label="service"><span>Service代码</span></Checkbox>
                 <Checkbox label="controller"><span>Controller代码</span></Checkbox>
                 <Checkbox label="view"><span>View视图代码</span></Checkbox>
+                <Checkbox label="selectView"><span>供选择用的View视图代码</span></Checkbox>
               </CheckboxGroup>
             </FormItem>
           </Form>
@@ -45,7 +46,7 @@
       return {
         form: {
           tables: [],
-          codeTypes: ['bean', 'mapper', 'dao', 'service', 'controller', 'view']
+          codeTypes: ['bean', 'mapper', 'dao', 'service', 'controller', 'view', 'selectView']
         },
         tables: {
           multipleTableList: []
