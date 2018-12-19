@@ -2,7 +2,7 @@ export default {
   /**
    * @description 配置显示在浏览器标签的title
    */
-  title: 'zywork-app后台管理',
+  title: 'zywork-generator代码自动生成-赣州智悦科技有限公司',
   /**
    * @description token在Cookie中存储的天数，默认1天
    */

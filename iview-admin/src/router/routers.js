@@ -99,10 +99,10 @@ export default [
     },
     {
       path: '/user',
-      name: '用户管理',
+      name: '页面演示',
       meta: {
         icon: 'ios-car',
-        title: '用户管理'
+        title: '页面演示'
       },
       component: Main,
       children: [
@@ -128,7 +128,7 @@ export default [
     },
     {
       path: '/user1',
-      name: '用户管理1',
+      name: '页面演示1',
       meta: {
         hideInMenu: true
       },
