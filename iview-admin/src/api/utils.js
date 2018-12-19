@@ -297,5 +297,5 @@ export const fitTable = (self, tableRef, tableColumns, columnKeys) => {
       })
     }
   })
-  
+
 }
