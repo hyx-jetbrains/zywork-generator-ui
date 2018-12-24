@@ -34,19 +34,23 @@ export const resetForm = (self, formRef) => {
 export const add = (self) => {
   self.$refs['addForm'].validate(valid => {
     if (valid) {
+      self.loading['add'] = true
       axios.request({
         url: self.urls.addUrl,
         method: 'POST',
         data: self.form
       }).then(response => {
-          if (response.data.code === 200) {
-            self.$Message.success(response.data.message);
-            resetForm(self, 'addForm')
-            cancelModal(self, 'add')
-            search(self)
-          }
+        self.loading['add'] = fasle
+        if (response.data.code !== 1001) {
+          self.$Message.error(response.data.message)
+          return
         }
-      ).catch(error => {
+        self.$Message.success(response.data.message)
+        resetForm(self, 'addForm')
+        cancelModal(self, 'add')
+        search(self)
+      }).catch(error => {
+        self.loading['add'] = fasle
         console.log(error)
         self.$Message.error('添加数据失败，稍候再试')
       })
@@ -66,14 +70,16 @@ export const edit = (self) => {
         method: 'POST',
         data: self.form
       }).then(response => {
-          if (response.data.code === 200) {
-            self.$Message.success(response.data.message);
-            resetForm(self, 'editForm')
-            cancelModal(self, 'edit')
-            search(self)
-          }
+        self.loading['edit'] = fasle
+        if (response.data.code !== 1001) {
+          self.$Message.error(response.data.message)
+          return
         }
-      ).catch(error => {
+        self.$Message.success(response.data.message)
+        resetForm(self, 'editorm')
+        cancelModal(self, 'edit')
+        search(self)
+      }).catch(error => {
         console.log(error)
         self.$Message.error('修改数据失败，稍候再试')
       })
@@ -95,7 +101,7 @@ export const remove = (self, row) => {
         url: self.urls.removeUrl + row.id,
         method: 'GET'
       }).then(response => {
-        if (response.data.code === 200) {
+        if (response.data.code === 1001) {
           self.$Message.success(response.data.message)
           search(self)
         }
@@ -131,7 +137,7 @@ export const batchRemove = (self) => {
           method: 'POST',
           data: ids
         }).then(response => {
-          if (response.data.code === 200) {
+          if (response.data.code === 1001) {
             self.$Message.success(response.data.message)
             self.table.selections = []
             search(self)
@@ -163,14 +169,13 @@ export const active = (self, row) => {
       isActive: isActive
     }
   }).then(response => {
-    if (response.data.code === 200) {
+    if (response.data.code === 1001) {
       self.$Message.success(response.data.message)
       search(self)
     }
   }).catch(error => {
     console.log(error)
     self.$Message.error('激活或冻结数据失败，稍候再试')
-
   })
 }
 
@@ -198,7 +203,7 @@ export const batchActive = (self, isActive) => {
         method: 'POST',
         data: rowArray
       }).then(response => {
-        if (response.data.code === 200) {
+        if (response.data.code === 1001) {
           self.$Message.success(response.data.message)
           self.table.selections = []
           search(self)
@@ -216,17 +221,18 @@ export const batchActive = (self, isActive) => {
  * @param self this
  */
 export const search = (self) => {
+  self.loading['search'] = true
   self.table.loading = true
   axios.request({
     url: self.urls.searchUrl,
     method: 'POST',
     data: self.searchForm
   }).then(response => {
-      self.table.loading = false
-      self.page.total = response.data.data.total
-      self.table.tableDetails = response.data.data.rows
-    }
-  ).catch(error => {
+    self.loading['search'] = false
+    self.table.loading = false
+    self.page.total = response.data.data.total
+    self.table.tableDetails = response.data.data.rows
+  }).catch(error => {
     self.table.loading = false
     self.$Message.error('加载数据失败，稍候再试')
   })
