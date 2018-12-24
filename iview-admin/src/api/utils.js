@@ -230,9 +230,15 @@ export const search = (self) => {
   }).then(response => {
     self.loading['search'] = false
     self.table.loading = false
+    if (response.data.code !== 1001) {
+      self.$Message.error(response.data.message)
+      return
+    }
     self.page.total = response.data.data.total
     self.table.tableDetails = response.data.data.rows
   }).catch(error => {
+    console.log(error)
+    self.loading['search'] = false
     self.table.loading = false
     self.$Message.error('加载数据失败，稍候再试')
   })
