@@ -191,7 +191,7 @@
               }).then(response => {
                 if (response.data.code === 1001) {
                   this.$Message.success(response.data.message)
-                } else {
+                } else if (response.data.code === 1002) {
                   this.$Message.warning(response.data.message)
                 }
               }).catch(error => {
