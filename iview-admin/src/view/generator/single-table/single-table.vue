@@ -136,7 +136,7 @@
             method: 'post',
             data: this.form
           }).then(response => {
-            if (response.data.code === 200) {
+            if (response.data.code === 1001) {
               this.$Message.success(response.data.message)
             }
           }).catch(error => {
