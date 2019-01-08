@@ -278,6 +278,9 @@
                     'on-click': (itemName) => {
                       this.userOpt(itemName, params.row)
                     }
+                  },
+                  props: {
+                    transfer: true
                   }
                 }, [
                   h('Button', {
