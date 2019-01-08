@@ -75,8 +75,10 @@
               method: 'post',
               data: this.form
             }).then(response => {
-              if (response.data.code === 1001) {
+              if (response.data.code == 1001) {
                 this.$Message.success('已修改JDBC配置')
+              } else {
+                this.$Message.warning(response.data.message)
               }
             }).catch(error => {
               console.log(error)
