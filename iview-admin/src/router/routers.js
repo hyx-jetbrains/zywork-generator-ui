@@ -114,15 +114,6 @@ export default [
             icon: 'ios-car'
           },
           component: () => import('@/view/demo/user/user.vue')
-        },
-        {
-          path: 'test-page',
-          name: '测试管理',
-          meta: {
-            title: '测试管理',
-            icon: 'ios-car'
-          },
-          component: () => import('@/view/demo/test/Test.vue')
         }
       ]
     },

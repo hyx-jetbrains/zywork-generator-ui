@@ -37,6 +37,12 @@
                 <Checkbox label="view"><span>View视图代码</span></Checkbox>
               </CheckboxGroup>
             </FormItem>
+            <FormItem label="直接覆盖已有代码" prop="overrideCodes">
+              <RadioGroup v-model="form.overrideCodes">
+                <Radio label="no" key="no">否</Radio>
+                <Radio label="override" key="override">是</Radio>
+              </RadioGroup>
+            </FormItem>
           </Form>
           <h4>所选表的信息：</h4>
           <Tabs v-model="currentTab">
@@ -65,7 +71,8 @@
           primaryTable: '',
           whereClause: '',
           columns: [],
-          codeTypes: ['bean', 'mapper', 'dao', 'service', 'controller', 'view']
+          codeTypes: ['bean', 'mapper', 'dao', 'service', 'controller', 'view'],
+          overrideCodes: 'no'
         },
         tableColumnMap: {},
         tables: {
@@ -174,7 +181,7 @@
         this.form.columns = []
         for (let key in this.tableColumnMap) {
           this.tableColumnMap[key].forEach((item, index) => {
-            this.form.columns.push(key + '-' + item.name + '-' + item.javaTypeName)
+            this.form.columns.push(key + '::' + item.name + '::' + item.javaTypeName)
           })
         }
         console.log(this.form.columns)
