@@ -78,7 +78,7 @@
               if (response.data.code == 1001) {
                 this.$Message.success('已修改JDBC配置')
               } else {
-                this.$Message.warning(response.data.message)
+                this.$Message.error(response.data.message)
               }
             }).catch(error => {
               console.log(error)

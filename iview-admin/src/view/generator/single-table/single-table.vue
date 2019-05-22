@@ -22,6 +22,7 @@
                 <Checkbox label="controller"><span>Controller代码</span></Checkbox>
                 <Checkbox label="view"><span>View视图代码</span></Checkbox>
                 <Checkbox label="selectView"><span>供选择用的View视图代码</span></Checkbox>
+                <Checkbox label="showView"><span>仅供展示用的View视图代码</span></Checkbox>
               </CheckboxGroup>
             </FormItem>
           </Form>
@@ -46,7 +47,7 @@
       return {
         form: {
           tables: [],
-          codeTypes: ['bean', 'mapper', 'dao', 'service', 'controller', 'view', 'selectView']
+          codeTypes: ['bean', 'mapper', 'dao', 'service', 'controller', 'view', 'selectView', 'showView']
         },
         tables: {
           multipleTableList: []
@@ -76,6 +77,10 @@
           {
             title: '注释',
             key: 'comment'
+          },
+          {
+            title: '注释详情',
+            key: 'commentDetail'
           }
         ],
         allTablesInfo: []
@@ -91,8 +96,12 @@
           url: '/table/all',
           method: 'get'
         }).then(response => {
-          this.tables.multipleTableList = response.data.data
-          this.$Message.success('已刷新所有数据表')
+          if (response.data.code === 1001) {
+            this.tables.multipleTableList = response.data.data
+            this.$Message.success('已刷新所有数据表')
+          } else {
+            this.$Message.error(response.data.message)
+          }
         }).catch(error => {
           console.log(error)
         })

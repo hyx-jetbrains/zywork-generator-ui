@@ -124,6 +124,10 @@
           {
             title: '注释',
             key: 'comment'
+          },
+          {
+            title: '注释详情',
+            key: 'commentDetail'
           }
         ],
         allTablesInfo: []
@@ -139,8 +143,12 @@
           url: '/table/all',
           method: 'get'
         }).then(response => {
-          this.tables.multipleTableList = response.data.data
-          this.$Message.success('已刷新所有数据表')
+          if (response.data.code === 1001) {
+            this.tables.multipleTableList = response.data.data
+            this.$Message.success('已刷新所有数据表')
+          } else {
+            this.$Message.error(response.data.message)
+          }
         }).catch(error => {
           console.log(error)
         })
